@@ -7,8 +7,8 @@ import org.testng.annotations.Test;
 public class LoginPageTest extends BaseTest {
 
     @Test
-    public void сheckThePriceOfTheItemAndItsNameInTheCart() {
-        loginToTheSystem();
+    public void validUserAndPassword() {
+        loginPage.loginToTheSystem();
         Assert.assertEquals(inventoryPage.getTitleText(), "PRODUCTS", "Тайтл не соответствует ожидаемому");
 
     }

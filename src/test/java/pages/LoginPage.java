@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 
 public class LoginPage extends BasePage {
 
+
     public static final By USERNAME_INPUT = By.xpath("//input[@placeholder='Username']");
     public static final By PASSWORD_INPUT = By.xpath("//input[@placeholder='Password']");
     public static final By LOGIN_BUTTON_INPUT = By.xpath("//input[@type='submit']");
@@ -14,6 +15,8 @@ public class LoginPage extends BasePage {
     public LoginPage(WebDriver driver) {
         super(driver);
     }
+
+
 
 
     public void openLoginPage() {
@@ -31,6 +34,11 @@ public class LoginPage extends BasePage {
 
     public String getErrorMassage() {
         return driver.findElement(ERROR_MASSAGE).getText();
+    }
+
+    public void loginToTheSystem(){
+        openLoginPage();
+        login("standard_user", "secret_sauce");
     }
 
 }

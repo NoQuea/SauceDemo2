@@ -7,14 +7,14 @@ public class InventoryPage extends BasePage{
 
     public static final String ADD_PRODUCT_BUTTON = "//div[div[div[a[div[@class='inventory_item_name'][text()='%s']]]]]//button[@data-test='add-to-cart-sauce-labs-onesie']";
     public static final String REMOVE_PRODUCT_BUTTON = "//div[div[div[a[div[@class='inventory_item_name'][text()='%s']]]]]//button[@data-test='remove-sauce-labs-onesie']";
-
+    public static final By SHOPPING_CART_LINK = By.xpath("//a[@class='shopping_cart_link']");
 
     public InventoryPage(WebDriver driver){
         super(driver);
     }
 
     public void openCart(){
-        driver.get("https://www.saucedemo.com/cart.html");
+        cartPage.openCart();
     }
 
     public void addToCart(String nameProduct) {

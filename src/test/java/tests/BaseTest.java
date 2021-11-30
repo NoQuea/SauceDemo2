@@ -7,7 +7,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
 import pages.CartPage;
 import pages.InventoryPage;
 import pages.LoginPage;
@@ -32,18 +31,13 @@ public class BaseTest {
 
         loginPage = new LoginPage(driver);
         inventoryPage = new InventoryPage(driver);
-
+        cartPage = new CartPage(driver);
     }
 
     @AfterMethod(alwaysRun = true)
     public void tearDown() throws InterruptedException {
-        Thread.sleep(1500);
+        Thread.sleep(3000);
         driver.quit();
     }
 
-    @Test
-    public void loginToTheSystem(){
-        loginPage.openLoginPage();
-        loginPage.login("standard_user", "secret_sauce");
-    }
 }
