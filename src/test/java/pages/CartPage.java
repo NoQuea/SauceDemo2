@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 public class CartPage extends BasePage{
 
     public static final By SHOPPING_CART_LINK = By.xpath("//a[@class='shopping_cart_link']");
-    public static final By CHECKOUT_BUTTON = By.xpath("////button[@data-test='checkout']");
+    public static final By CHECKOUT_BUTTON = By.xpath("//button[@data-test='checkout']");
     public static final By CONTINUE_SHOPPING_BUTTON = By.xpath("//button[@data-test='continue-shopping']");
 
 

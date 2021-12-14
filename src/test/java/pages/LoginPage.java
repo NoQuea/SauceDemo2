@@ -16,9 +16,6 @@ public class LoginPage extends BasePage {
         super(driver);
     }
 
-
-
-
     public void openLoginPage() {
         driver.get("https://www.saucedemo.com");
     }
