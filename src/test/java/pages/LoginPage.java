@@ -1,6 +1,7 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 
 
@@ -36,6 +37,7 @@ public class LoginPage extends BasePage {
     public void loginToTheSystem(){
         openLoginPage();
         login("standard_user", "secret_sauce");
+
     }
 
 }
