@@ -17,7 +17,7 @@ public class DataProviderTest extends BaseTest {
         };
     }
 
-    @Test(dataProvider = "loginData")
+    @Test(dataProvider = "loginData", description = "Запуск всех негативных проверок с помощью DataProvider")
     public void negativeLoginTest(String userName, String password, String errorMessage) {
         loginPage.openLoginPage();
         loginPage.login(userName, password);

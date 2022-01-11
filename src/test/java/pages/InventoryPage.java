@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -12,15 +13,14 @@ public class InventoryPage extends BasePage{
     public InventoryPage(WebDriver driver){
         super(driver);
     }
+    
 
-    public void openCart(){
-        cartPage.openCart();
-    }
-
+    @Step("Add to cart")
     public void addToCart(String nameProduct) {
         driver.findElement(By.xpath(String.format(ADD_PRODUCT_BUTTON, nameProduct))).click();
     }
 
+    @Step("Remove from cart")
     public void removeFromCart(String nameProduct){
         driver.findElement(By.xpath(String.format(REMOVE_PRODUCT_BUTTON, nameProduct))).click();
     }

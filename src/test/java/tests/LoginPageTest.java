@@ -1,15 +1,13 @@
 package tests;
 
 import org.testng.Assert;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import tests.base.BaseTest;
-import tests.base.Retry;
 
 
 public class LoginPageTest extends BaseTest {
 
-    @Test(groups = "smoke")
+    @Test(priority = 1, description = "Пользователь заполняет поле Login и Password валидными значениями")
     public void validUserAndPassword() {
         loginPage.loginToTheSystem();
         Assert.assertEquals(inventoryPage.getTitleText(), "PRODUCTS", "Тайтл не соответствует ожидаемому");
@@ -50,7 +48,7 @@ public class LoginPageTest extends BaseTest {
                 "Error Massage is invalid");
     }
 
-    @Test
+    @Test(priority = 3, description = "Пользователь заполняет поля блокируемым Login")
     public void lockedUser(){
         loginPage.openLoginPage();
         loginPage.login("locked_out_user","secret_sauce");

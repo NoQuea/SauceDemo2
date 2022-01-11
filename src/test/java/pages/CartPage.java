@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -14,7 +15,7 @@ public class CartPage extends BasePage{
         super(driver);
     }
 
-
+    @Step("Open cart")
     public void openCart(){
         driver.get("https://www.saucedemo.com/cart.html");
     }
