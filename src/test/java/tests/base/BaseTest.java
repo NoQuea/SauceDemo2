@@ -1,7 +1,6 @@
 package tests.base;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.apache.log4j.BasicConfigurator;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -25,7 +24,6 @@ public class BaseTest {
 
     @BeforeMethod
     public void setUp(ITestContext testContext) {
-        BasicConfigurator.configure();
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--start-maximized");
@@ -40,8 +38,7 @@ public class BaseTest {
     }
 
     @AfterMethod(alwaysRun = true)
-    public void tearDown() throws InterruptedException {
-        Thread.sleep(3000);
+    public void tearDown()  {
         driver.quit();
     }
 

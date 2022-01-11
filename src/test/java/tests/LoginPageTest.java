@@ -9,24 +9,13 @@ import tests.base.Retry;
 
 public class LoginPageTest extends BaseTest {
 
-    @DataProvider(name = "Входящие данные для задачки iTechArt")
-    public Object[][] inputForITechTask() {
-        return new Object[][]{
-                {"", "Epic sadface: Username is required", "Error Massage is invalid"},
-                {"", "", ""},
-                {"", "", ""},
-                {"", "", ""}
-        };
-    }
-
-
-    @Test(retryAnalyzer = Retry.class)
+    @Test(groups = "smoke")
     public void validUserAndPassword() {
         loginPage.loginToTheSystem();
         Assert.assertEquals(inventoryPage.getTitleText(), "PRODUCTS", "Тайтл не соответствует ожидаемому");
 
     }
-    @Test(priority = 1)
+    @Test(priority = 1, description = "Пользователь не заполняет поле Login")
     public void noUserName(){
         loginPage.openLoginPage();
         loginPage.login("","secret_sauce");
@@ -34,7 +23,7 @@ public class LoginPageTest extends BaseTest {
                 "Epic sadface: Username is required",
                 "Error Massage is invalid");
     }
-    @Test(description = "No Password")
+    @Test(priority = 2, description = "Пользователь не заполняет поле Password")
     public void noPassword(){
         loginPage.openLoginPage();
         loginPage.login("standard_user","");
@@ -43,8 +32,17 @@ public class LoginPageTest extends BaseTest {
                 "Error Massage is invalid");
     }
 
-    @Test(alwaysRun = true, dependsOnMethods = "noPassword")
-    public void noEverything(){
+    @Test(priority = 2, description = "Пользователь вводит не валидные Login и Password")
+    public void noValidLoginAndPassword(){
+        loginPage.openLoginPage();
+        loginPage.login("adasd","avsdv");
+        Assert.assertEquals(loginPage.getErrorMassage(),
+                "Epic sadface: Username and password do not match any user in this service",
+                "Error Massage is valid");
+    }
+
+    @Test(priority = 3, dependsOnMethods = "noPassword", description = "Пользователь не заполняет поля Login и Password")
+    public void noLoginAndPassword(){
         loginPage.openLoginPage();
         loginPage.login("","");
         Assert.assertEquals(loginPage.getErrorMassage(),
@@ -52,7 +50,7 @@ public class LoginPageTest extends BaseTest {
                 "Error Massage is invalid");
     }
 
-    @Test(invocationCount = 100, threadPoolSize = 10)
+    @Test
     public void lockedUser(){
         loginPage.openLoginPage();
         loginPage.login("locked_out_user","secret_sauce");
