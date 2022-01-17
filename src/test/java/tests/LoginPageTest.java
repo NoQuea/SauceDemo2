@@ -7,13 +7,13 @@ import tests.base.BaseTest;
 
 public class LoginPageTest extends BaseTest {
 
-    @Test(priority = 1, description = "Пользователь заполняет поле Login и Password валидными значениями")
+    @Test(priority = 1, description = "The user fills in the Login and Password fields with valid values\n")
     public void validUserAndPassword() {
         loginPage.loginToTheSystem();
-        Assert.assertEquals(inventoryPage.getTitleText(), "PRODUCTS", "Тайтл не соответствует ожидаемому");
+        Assert.assertEquals(inventoryPage.getTitleText(), "PRODUCTS", "Title is not as expected");
 
     }
-    @Test(priority = 1, description = "Пользователь не заполняет поле Login")
+    @Test(priority = 1, description = "The user does not fill in the Login field")
     public void noUserName(){
         loginPage.openLoginPage();
         loginPage.login("","secret_sauce");
@@ -21,7 +21,7 @@ public class LoginPageTest extends BaseTest {
                 "Epic sadface: Username is required",
                 "Error Massage is invalid");
     }
-    @Test(priority = 2, description = "Пользователь не заполняет поле Password")
+    @Test(priority = 2, description = "The user does not fill in the Password field")
     public void noPassword(){
         loginPage.openLoginPage();
         loginPage.login("standard_user","");
@@ -30,7 +30,7 @@ public class LoginPageTest extends BaseTest {
                 "Error Massage is invalid");
     }
 
-    @Test(priority = 2, description = "Пользователь вводит не валидные Login и Password")
+    @Test(priority = 2, description = "User enters invalid Login and Password")
     public void noValidLoginAndPassword(){
         loginPage.openLoginPage();
         loginPage.login("adasd","avsdv");
@@ -39,7 +39,7 @@ public class LoginPageTest extends BaseTest {
                 "Error Massage is valid");
     }
 
-    @Test(priority = 3, dependsOnMethods = "noPassword", description = "Пользователь не заполняет поля Login и Password")
+    @Test(priority = 3, dependsOnMethods = "noPassword", description = "The user does not fill in the Login and Password fields")
     public void noLoginAndPassword(){
         loginPage.openLoginPage();
         loginPage.login("","");
@@ -48,7 +48,7 @@ public class LoginPageTest extends BaseTest {
                 "Error Massage is invalid");
     }
 
-    @Test(priority = 3, description = "Пользователь заполняет поля блокируемым Login")
+    @Test(priority = 3, description = "The user fills in the fields with a blocked Login")
     public void lockedUser(){
         loginPage.openLoginPage();
         loginPage.login("locked_out_user","secret_sauce");

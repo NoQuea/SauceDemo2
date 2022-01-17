@@ -24,4 +24,9 @@
         </classes>
     </test> <!-- Test -->
 
+    <test name="test 4">
+        <classes>
+            <class name="tests.DataProviderTest"/>
+        </classes>
+    </test> <!-- Test -->
 </suite>

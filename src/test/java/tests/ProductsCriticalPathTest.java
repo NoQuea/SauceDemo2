@@ -6,14 +6,13 @@ import tests.base.BaseTest;
 
 public class ProductsCriticalPathTest extends BaseTest {
 
-    @Test (description = "Продукт должен быть добавлен в корзину и удален")
+    @Test (description = "The product should be added into cart and removed")
     public void productShouldAddedIntoCartAndRemove(){
         loginPage.loginToTheSystem();
-        inventoryPage.addToCart("Sauce Labs Onesie");
-        Assert.assertEquals(inventoryPage.getRemoveButtonText(),"REMOVE","The button is not found");
+        inventoryPage.addToCart("backpack");
+        Assert.assertEquals(inventoryPage.getRemoveButtonText("backpack"),"REMOVE","The button is not found");
 
-        inventoryPage.removeFromCart("Sauce Labs Onesie");
-        Assert.assertEquals(inventoryPage.getAddButtonText(),"ADD TO CART","The button is not found");
-
+        inventoryPage.removeFromCart("backpack");
+        Assert.assertEquals(inventoryPage.getAddButtonText("backpack"),"ADD TO CART","The button is not found");
     }
 }
