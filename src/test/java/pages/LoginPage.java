@@ -1,8 +1,8 @@
 package pages;
 
+import io.qameta.allure.Attachment;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
-import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 
 
@@ -13,7 +13,6 @@ public class LoginPage extends BasePage {
     public static final By PASSWORD_INPUT = By.xpath("//input[@placeholder='Password']");
     public static final By LOGIN_BUTTON_INPUT = By.xpath("//input[@type='submit']");
     public static final By ERROR_MASSAGE = By.cssSelector(".error-message-container");
-
 
 
     public LoginPage(WebDriver driver) {
@@ -34,7 +33,7 @@ public class LoginPage extends BasePage {
 
         driver.findElement(LOGIN_BUTTON_INPUT).click();
     }
-
+    @Attachment(value = "screenshot", type = "image/png")
     @Step("Get error massage")
     public String getErrorMassage() {
         return driver.findElement(ERROR_MASSAGE).getText();

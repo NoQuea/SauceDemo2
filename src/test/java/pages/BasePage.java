@@ -5,10 +5,9 @@ import org.openqa.selenium.WebDriver;
 
 public class BasePage {
 
-    WebDriver driver;
-    LoginPage loginPage;
-    CartPage cartPage;
+    public static final By SHOPPING_CART_LINK = By.xpath("//a[@class='shopping_cart_link']");
 
+    WebDriver driver;
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
@@ -18,10 +17,5 @@ public class BasePage {
         return driver.findElement(By.cssSelector(".title")).getText();
     }
 
-    public String getRemoveButtonText() {
-        return driver.findElement(By.xpath("//*[@data-test='remove-sauce-labs-onesie']")).getText();
-    }
-    public String getAddButtonText() {
-        return driver.findElement(By.xpath("//*[@data-test='add-to-cart-sauce-labs-onesie']")).getText();
-    }
+
 }
